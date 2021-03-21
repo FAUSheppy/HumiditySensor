@@ -4,7 +4,6 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <Arduino.h>
-#include <PubSubClient.h>
 #include <ESP8266WiFi.h>
 
 #define ONE_SECOND 1000
