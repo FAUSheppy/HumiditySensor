@@ -36,11 +36,16 @@ void setup() {
 
   Serial.begin(SERIAL_DEFAULT);
 
+  Serial.println(F("WiFI Setup Started"));
+
   /* check Wifi */
   WiFi.begin(WLAN_SSID, WLAN_PASSWORD);
   while (WiFi.status() != WL_CONNECTED){
+    Serial.println(F("WiFI Setup waiting"));
     delay(ONE_SECOND);
   }
+
+  Serial.println(F("WiFI Setup Completed"));
 
   #ifdef with_display
 
@@ -71,7 +76,7 @@ void loop() {
   if((err = dht11.read(&temperature, &humidity, NULL)) != SimpleDHTErrSuccess) {
     Serial.print("Read DHT11 failed, err=");
     Serial.println(err);
-    delay(1000);
+    delay(10000);
     return;
   }
 
@@ -91,13 +96,20 @@ void loop() {
   HTTPClient http;
   http.begin(client, TARGET_INFLUX_SERVER);
 
-  String dataTemp = "temperatur,location=" + String(SENSOR_LOCATION) +",value=" + String(temperature);
-  String dataHum  = "humidity,location="   + String(SENSOR_LOCATION) +",value=" + String(humidity);
+  String dataTemp = "temperature,location=" + String(SENSOR_LOCATION) +" value=" + String(temperature);
+  String dataHum  = "humidity,location="    + String(SENSOR_LOCATION) +" value=" + String(humidity);
 
   String auth = base64::encode(String(INFLUX_AUTH_USER) + ":" + String(INFLUX_AUTH_PW));
+  
   http.addHeader("Authorization", "Basic " + auth);
-
   auto retTemp = http.POST(dataTemp);
+  
+  Serial.println(dataTemp);
+  Serial.println(TARGET_INFLUX_SERVER);
+  Serial.println(TARGET_INFLUX_PORT);
+  Serial.println(retTemp);
+  
+  http.addHeader("Authorization", "Basic " + auth);
   auto retHum  = http.POST(dataHum);
 
   delay(MESSURMENT_DELAY);
