@@ -59,11 +59,6 @@ void setup() {
 }
 
 void loop() {
-
-  if(!mqttClient.connected()){
-    reconnect();
-    yield();
-  }
  
   /* read sensor */ 
   byte temperature = 0;
@@ -97,15 +92,4 @@ void loop() {
   auto ret = http.POST()
   
   delay(MESSURMENT_DELAY);
-}
-
-void reconnect(){
-  while (!mqttClient.connected()){
-     String clientId = "ESP8266-" + String(random(0xffff), HEX);
-     if (!mqttClient.connect(clientId.c_str())){
-         Serial.print("-");
-         delay(ONE_SECOND);
-     }
-     yield();
-  }
 }
