@@ -1,0 +1,11 @@
+#define SERIAL_DEFAULT          115200
+
+#define WLAN_PASSWORD           ""
+#define WLAN_SSID               ""
+
+#define SENSOR_LOCATION         "Exmaple_Living_Room"
+
+#define MESSURMENT_DELAY        60000
+
+#define TARGET_INFLUX_SERVER    "https://example.com/"
+#define TARGET_INFLUX_PORT      "8080"
