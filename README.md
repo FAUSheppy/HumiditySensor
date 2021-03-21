@@ -30,7 +30,7 @@ Nginx can be used for *TLS* and *Basic Auth*:
         auth_basic_user_file "/path/to/authfile";
     
         location / {
-    	    proxy_set_header X-REAL-HOSTNAME $host;
+            proxy_set_header X-REAL-HOSTNAME $host;
             proxy_pass http://localhost:8086;
         }
     }
