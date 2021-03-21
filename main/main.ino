@@ -38,12 +38,6 @@ void setup() {
 
   Serial.println(F("WiFI Setup Started"));
 
-  /* check Wifi */
-  WiFi.begin(WLAN_SSID, WLAN_PASSWORD);
-  while (WiFi.status() != WL_CONNECTED){
-    Serial.println(F("WiFI Setup waiting"));
-    delay(ONE_SECOND);
-  }
 
   Serial.println(F("WiFI Setup Completed"));
 
@@ -64,6 +58,19 @@ void setup() {
 
   #endif
 
+}
+
+void connectToWiFI(){
+    if(WiFi.status() == WL_CONNECTED){
+        return;
+    }else{
+        WiFi.disconnect();
+        WiFi.begin(WLAN_SSID, WLAN_PASSWORD);
+        while (WiFi.status() != WL_CONNECTED){
+            Serial.println(F("WiFI Setup waiting"));
+            delay(ONE_SECOND);
+        }
+    }
 }
 
 void loop() {
