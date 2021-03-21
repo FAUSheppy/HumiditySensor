@@ -7,7 +7,7 @@
 
 #define MESSURMENT_DELAY        60000
 
-#define TARGET_INFLUX_SERVER    "https://example.com/"
+#define TARGET_INFLUX_SERVER    "https://example.com:443/"
 #define TARGET_INFLUX_PORT      8080
 
 #define INFLUX_AUTH_USER        ""
