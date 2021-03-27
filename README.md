@@ -1,4 +1,4 @@
-![Hardware](https://media.atlantishq.de/pictures/board_sensory_github.jpeg)
+![Hardware](https://media.atlantishq.de/pictures/board_sensory_github.jpeg =250x)
 ![Grafana](https://media.atlantishq.de/pictures/grafana_github_board.png)
 
 # Setup/Dependencies
