@@ -1,3 +1,6 @@
+![Hardware](https://media.atlantishq.de/pictures/board_sensory_github.jpeg)
+![Grafana](https://media.atlantishq.de/pictures/grafana_github_board.png)
+
 # Setup/Dependencies
 
 - [Generic ESP 8266](https://github.com/esp8266/Arduino#installing-with-boards-manager)
